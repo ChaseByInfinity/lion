@@ -1,0 +1,80 @@
+{% extends 'header.html' %}
+
+{% block title %} Volunteer Login {% endblock %}
+
+{% block body %}
+<style>
+    .space {
+        margin-top:90px;
+    }
+
+</style>
+<div class="space">
+
+</div>
+
+<div class="container">
+
+		<ol class="breadcrumb">
+			<li><a href="index.html">Home</a></li>
+			<li class="active">Volunteer Login</li>
+		</ol>
+
+		<div class="row">
+			
+			<!-- Article main content -->
+			<article class="col-xs-12 maincontent">
+				<header class="page-header">
+					<h1 class="page-title">Volunteer Sign In</h1>
+				</header>
+				
+				<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                    {% with messages = get_flashed_messages () %}
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-danger">
+                    {{ message }}
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    </div>
+                    {% endfor %}
+{% endif %}
+{% endwith %}
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<h3 class="thin text-center">Sign in to your account</h3>
+							<p class="text-center text-muted">This sign in is for volunteers within  the campaign, <a href="signup.html">Register</a> here if you're interested in aiding with the Richard Lion campaign. </p>
+							<hr>
+							
+							<form method='POST' action='/volunteer/login/'>
+								<div class="top-margin">
+									<label>Username<span class="text-danger">*</span></label>
+									<input type="text" name='username' class="form-control">
+								</div>
+								<div class="top-margin">
+									<label>Password <span class="text-danger">*</span></label>
+									<input type="password" name='password' class="form-control">
+								</div>
+
+								<hr>
+
+								<div class="row">
+									<div class="col-lg-8">
+										
+									</div>
+									<div class="col-lg-4 text-right">
+										<button class="btn btn-action" type="submit">Sign in</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+
+				</div>
+				
+			</article>
+			<!-- /Article -->
+
+		</div>
+	</div>	<!-- /container -->
+
+{% endblock %}

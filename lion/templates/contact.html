@@ -1,0 +1,95 @@
+{% extends 'header.html' %}
+
+{% block title %} Contact Us {% endblock %}
+
+{% block body %}
+<style>
+    .space {
+        margin-top:90px;
+    }
+
+</style>
+<div class="space">
+
+</div>
+
+<div class="container">
+		<ol class="breadcrumb">
+			<li><a href="index.html">Home</a></li>
+			<li class="active">About</li>
+		</ol>
+
+		<div class="row">
+
+			<!-- Article main content -->
+			<article class="col-sm-9 maincontent">
+				<header class="page-header">
+					<h1 class="page-title">Contact us</h1>
+				</header>
+  {% with messages = get_flashed_messages () %}
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-danger">
+                    {{ message }}
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    </div>
+                    {% endfor %}
+{% endif %}
+{% endwith %}
+				<p>
+					The Richard Lion for Senate campaign is oriented around you, the individual. We'd love to hear from you, whether it be questions about the campaign or Richard, donation inquiries, or media inquiries. Richard wishes to be as transparent as possible, similar to how transparent he would be in the Senate.
+				</p>
+				<br>
+					<form method='POST' action='/contact/'>
+						<div class="row">
+							<div class="col-sm-4">
+								<input class="form-control" type="text" name="name" placeholder="Name">
+							</div>
+							<div class="col-sm-4">
+								<input class="form-control" type="text" name="email" placeholder="Email">
+							</div>
+							<div class="col-sm-4">
+								<input class="form-control" type="text" name="phone" placeholder="Phone">
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-sm-12">
+								<textarea name="message" placeholder="Type your message here..." class="form-control" rows="9"></textarea>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-sm-6">
+							
+							</div>
+							<div class="col-sm-6 text-right">
+								<input class="btn btn-action" type="submit" value="Send message">
+							</div>
+						</div>
+					</form>
+
+			</article>
+			<!-- /Article -->
+
+			<!-- Sidebar -->
+			<aside class="col-sm-3 sidebar sidebar-right">
+
+				<div class="widget">
+					<h4>Address</h4>
+					<address>
+						388 Hartford Rd, Manchester, CT, 06040, USA
+					</address>
+					<h4>Phone:</h4>
+					<address>
+						(860) 913-3474
+					</address>
+				</div>
+
+			</aside>
+			<!-- /Sidebar -->
+
+		</div>
+	</div>
+	</div>
+{% endblock %}

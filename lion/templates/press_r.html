@@ -1,0 +1,80 @@
+{% extends 'header.html' %}
+
+{% block title %} Press {% endblock %}
+
+{% block body %}
+<style>
+    .space {
+        margin-top:90px;
+    }
+
+</style>
+<div class="space">
+
+</div>
+
+<div class="container">
+
+		<ol class="breadcrumb">
+			<li><a href="/press/">Press</a></li>
+			<li class="active">All</li>
+		</ol>
+<div class="row">
+
+            <!-- Blog Entries Column -->
+            <div class="col-md-8">
+
+                <h1 class="page-header">
+                    Press Releases
+                    <small>The latest from Richard Lion</small>
+                </h1>
+{% if all.items %}
+                {% for post in all.items %}
+                <!-- First Blog Post -->
+                <h2>
+                    <a href="/view/press/{{ post.id }}">{{ post.title }}</a>
+                </h2>
+                <p class="lead">
+                    by {{ post.author }}
+                </p>
+                <p> <i class="fa fa-calendar "></i> Posted on {{ post.date_posted.strftime('%B %-m, %Y') }} at {{ post.date_posted.strftime('%l:%M %p') }} </p>
+                <hr>
+                
+                <p>{% if post.body|length > 160 %}
+                {% print post.body[:160] %}
+{% endif %}&#8230;</p>
+                <a class="btn btn-primary" href="/view/press/{{ post.id }}">Read More</a>
+
+                <hr>
+                 {% endfor %}
+{% else %}
+<div class="alert alert-danger">
+                No press releases</div>
+                {% endif %}
+           
+
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    <li class="previous">
+                       {% if all.has_prev %} <a href="{{ url_for('all_press', page=all.prev_num) }}">← Older</a>
+                        {% else %}
+                        <a href="{{ url_for('all_press', page=all.prev_num) }}">← Older (None)</a>
+                        {% endif %}
+                    </li>
+                    <li class="next">
+                        {% if all.has_next %} 
+                        <a href="{{ url_for('all_press', page=all.next_num) }}">Newer →</a>{% else %}
+                        <a href="{{ url_for('all_press', page=all.next_num) }}">Newer (None) →</a>
+                        {% endif %}
+                    </li>
+                </ul>
+
+            </div>
+
+       
+
+            </div>
+
+        </div>
+    {% endblock %}

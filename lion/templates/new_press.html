@@ -1,0 +1,42 @@
+{% extends 'dashboard_header.html' %}
+
+{% block title %} New Press Release {% endblock %}
+
+
+
+{% block body %}
+
+<div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1>New Press Release</h1>
+                        {% with messages = get_flashed_messages () %}
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-info">
+                    {{ message }}
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    </div>
+                    {% endfor %}
+{% endif %}
+{% endwith %}
+                        
+                        <form method='POST' action='/new/press/'>
+                            <p><input type="text" name="title" class="form-control" placeholder="Title" style="width:75%"></p>
+                            <p><textarea name="body" class="form-control" style="width:75%;height:400px;resize:vertical;" placeholder="Body"></textarea></p>
+                            
+                            
+                        
+                        <p><input type="submit" class="btn btn-primary" value="Publish"></p>
+                        </form>
+                        
+                        
+              
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+{% endblock %}

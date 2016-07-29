@@ -1,0 +1,62 @@
+{% extends 'dashboard_header.html' %}
+
+{% block title %} Press Home {% endblock %}
+
+
+
+{% block body %}
+
+<div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1>Press Releases</h1>
+                        <a href="/new/press/"><btn class="btn btn-primary">Add new Press Release</btn></a><br><br>
+                        {% with messages = get_flashed_messages () %}
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-info">
+                    {{ message }}
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    </div>
+                    {% endfor %}
+{% endif %}
+{% endwith %}
+               {% if not press %}
+<div class="alert alert-danger">No press releases yet
+                        </div>
+                        
+                        {% else %}
+                        
+   <table class="table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Date</th>
+          <th>Settings</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for p in press %}
+      <tr>
+          
+        <td>{{ p.title }}</td>
+        <td>{{ p.author }}</td>
+        <td>{{ p.date_posted.strftime('%m/%d/%Y at %l:%M %p') }}</td>
+        <td><a href="/edit/press/{{ p.id }}"><btn class="btn btn-primary">Edit</btn></a>
+            <a href="/delete/press/{{ p.id }}"><btn class="btn btn-primary">Delete</btn></a>
+          </td>
+      </tr>
+     {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+              
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+{% endblock %}

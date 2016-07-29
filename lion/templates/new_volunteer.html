@@ -1,0 +1,52 @@
+{% extends 'dashboard_header.html' %}
+
+{% block title %} New Volunteer {% endblock %}
+
+
+
+{% block body %}
+
+<div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1>New Volunteer</h1>
+                        {% with messages = get_flashed_messages () %}
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-info">
+                    {{ message }}
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    </div>
+                    {% endfor %}
+{% endif %}
+{% endwith %}
+                        
+                        <form method='POST' action='/new/volunteer/'>
+                        <p><input type="text" name="username" class="form-control" style="width:75%" placeholder="Username"></p>
+                        <p><input type="text" name="fname" class="form-control" style="width:75%" placeholder="First Name"></p>
+                        <p><input type="text" name="lname" class="form-control" style="width:75%" placeholder="Last Name"></p>
+                        <p><input type="password" name="password" class="form-control" style="width:75%" placeholder="Password"></p>
+                        <p><input type="text" name="email" class="form-control" style="width:75%" placeholder="Email"></p>
+                        <div class="form-group">
+  <label for="sel1">Admin:</label>
+  <select class="form-control" name="admin" id="admin">
+    <option>Yes</option>
+    <option>No</option>
+   
+  </select>
+</div>
+                            
+                        
+                        <p><input type="submit" class="btn btn-primary" value="Add"></p>
+                        </form>
+                        
+                        
+              
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+{% endblock %}

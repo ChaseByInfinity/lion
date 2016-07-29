@@ -1,0 +1,63 @@
+{% extends 'dashboard_header.html' %}
+
+{% block title %} Volunteers {% endblock %}
+
+
+
+{% block body %}
+
+<div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1>Current Volunteers</h1>
+                        <a href="/new/volunteer/"><btn class="btn btn-primary">Add new volunteer</btn></a><br><br>
+                        {% with messages = get_flashed_messages () %}
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-info">
+                    {{ message }}
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    </div>
+                    {% endfor %}
+{% endif %}
+{% endwith %}
+                        
+                        <table class="table">
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+        {% if isAdmin == True %}
+      <th>Settings</th>
+        {% endif %}
+    </tr>
+  </thead>
+  <tbody>
+      {% for volunteer in volunteers %}
+    <tr>
+      <th scope="row">{{ volunteer.username }}</th>
+      <td>{{ volunteer.fname }}</td>
+      <td>{{ volunteer.lname }}</td>
+      <td>{{ volunteer.email }}</td>
+    {% if isAdmin == True %}
+<td><a href="/edit/volunteer/{{ volunteer.id }}"><btn class="btn btn-primary">Edit</btn>
+    </a><a href="/change/password/{{ volunteer.id }}"><btn class="btn btn-primary">Change Password</btn>
+    </a>
+        </td>
+        {% endif %}
+    </tr>
+      {% endfor %}
+  
+  </tbody>
+</table>
+              
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+{% endblock %}

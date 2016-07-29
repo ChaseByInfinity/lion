@@ -1,0 +1,103 @@
+{% extends 'header.html' %}
+
+{% block title %} Richard Lion for US Senate {% endblock %}
+
+{% block body %}
+<style>
+.transbox {
+  margin: 30px;
+  background-color: #000;
+  border: 1px solid black;
+  opacity: 0.7;
+  filter: alpha(opacity=60); /* For IE8 and earlier */
+}
+</style>
+<!-- Header -->
+	<header id="head">
+		<div class="container">
+			<div class="row">
+                <div class="transbox">
+				<h1 class="lead">Peace, prosperity and freedom</h1>
+				<p class="tagline">Libertarian Richard Lion wishes to empower the people, not the government.</p>
+                    </div>
+				<p><a class="btn btn-action btn-lg" role="button">SIGN UP</a> <a class="btn btn-action btn-lg" role="button">LEARN MORE</a></p>
+			</div>
+		</div>
+	</header>
+	<!-- /Header -->
+
+	<!-- Intro -->
+	<div class="container text-center">
+		<br> <br>
+		<h2 class="thin">Libertarian Senate Candidate Richard Lion is a fervent voice for freedom, smaller government, and expansion of individuality and self-governance.</h2>
+		<p class="text-muted">
+            Libertarians believe The People ought to do as they wish, so long as they harm no one else. This immutable phrase is the basis for Lion's political ideology. <strong>Live and let live.</strong>
+		</p>
+	</div>
+	<!-- /Intro-->
+		
+	<!-- Highlights - jumbotron -->
+	<div class="jumbotron top-space">
+		<div class="container">
+			
+            <h3 class="text-center thin"><i>Richard Lion</i> is a fresh voice, here to disrupt the status quo.</h3>
+			
+			<div class="row">
+				<div class="col-md-3 col-sm-6 highlight">
+					<div class="h-caption"><h4><i class="fa fa-users fa-5"></i>One Of Us</h4></div>
+					<div class="h-body text-center">
+						<p>Richard Lion is an ordinary American, he is no different than you. He's in sync and in tune with average Americans. He, too, is tired of career politicians trampling upon our inalienable rights. He wishes to restore our Constitutional values, restrain government, and become a voice for the common man and woman.</p>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6 highlight">
+					<div class="h-caption"><h4><i class="fa fa-gavel fa-5"></i>Principled</h4></div>
+					<div class="h-body text-center">
+						<p>Richard stands by his principles. He will fight for <strong>you</strong> in every facet of government. His vision and his goal is to restore individual liberty and economic freedom. As a Senator, Richard will usher in a redemptive era reliability and conviction </p>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6 highlight">
+					<div class="h-caption"><h4><i class="fa fa-unlock fa-5"></i>Driven</h4></div>
+					<div class="h-body text-center">
+						<p>Richard is here to unlock America, both its potential and its populace. We're hurtling towards tyranny, it's inevitable. Or is it? By disrupting the status quo and exuding ideals that favor the freedom of the American people Richard aims to reverse this. Together, our freedom from tyrannical leaders is a reality. The smaller the government, the better.</p>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6 highlight">
+					<div class="h-caption"><h4><i class="fa fa-heart-o fa-5"></i>Libertarian</h4></div>
+					<div class="h-body text-center">
+						<p>Richard is a Libertarian, but what is a libertarian? A libertarian is an individual who believes in fiscal conservatism, social tolerance, economic freedom, and individuality. Libertarians (as a party) are force to reckon with and the <strong>3rd</strong> largest political party in the country. Tired of extremes? Libertarians are the healthy balance.</p>
+					</div>
+				</div>
+			</div> <!-- /row  -->
+		
+		</div>
+	</div>
+	<!-- /Highlights -->
+
+	<!-- container -->
+	<div class="container">
+
+		<h2 class="text-center top-space">Latest Press</h2>
+        <hr>
+		<br>
+
+		<div class="row">
+            {% for p in firstTwo %}
+			<div class="col-sm-6">
+				<a href="/view/press/{{ p.id }}"><h3>{{ p.title }}</h3></a>
+                <i class="fa fa-calendar "></i> {{ p.date_posted.strftime('%B %-m, %Y') }}
+				<p>{% if p.body|length > 80 %}
+                {% print p.body[:80] %}
+{% endif %}&#8230;</p>
+			</div>
+			{% endfor %}
+		</div> <!-- /row -->
+
+		
+
+		<div class="jumbotron top-space">
+			<h4>This election isn't about me. This election is about you. I am one of you. I have a clear goal and I plan to achieve it. That goal is to return the power to the people. </h4>
+     		<p class="text-right">This is our moment. Let's usher in a new era together.  <a class="btn btn-warning btn-large">Donate to our campaign »</a></p>
+  		</div>
+
+</div>	<!-- /container -->
+{% endblock %}

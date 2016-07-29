@@ -1,0 +1,33 @@
+{% extends 'dashboard_header.html' %}
+
+{% block title %} Volunteer Home {% endblock %}
+
+
+
+{% block body %}
+
+<div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1>Richard Lion for US Senate Volunteer Center</h1>
+                        {% with messages = get_flashed_messages () %}
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-info">
+                    {{ message }}
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    </div>
+                    {% endfor %}
+{% endif %}
+{% endwith %}
+                        <p>Welcome volunteers and campaign managers apart of the Richard Lion for US Senate run. As is for any campaign, organization is essential to success. This comprehensive dashboard will allow you to nagivate through current volunteers, add new volunteers and their information, publish and edit press releases, and keep a clean record of changes.</p>
+                        <p>A reminder: only <strong>volunteers with admin privileges</strong> can remove other volunteers.</p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+{% endblock %}

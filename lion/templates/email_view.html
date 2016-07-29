@@ -1,0 +1,36 @@
+{% extends 'dashboard_header.html' %}
+
+{% block title %} Ciew {% endblock %}
+
+
+
+{% block body %}
+
+<div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1>Email from {{ it.name }}</h1>
+                        <p>This is an email from an inidivudal at {{ it.email }}</p><br>
+                        {% with messages = get_flashed_messages () %}
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-info">
+                    {{ message }}
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    </div>
+                    {% endfor %}
+{% endif %}
+{% endwith %}
+                        <p>   {{ it.msg }}</p>
+                        <br>
+                        
+                        <a href="mailto:{{ it.email }}"><btn class="btn btn-success">Email them back</btn></a>
+             
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+{% endblock %}

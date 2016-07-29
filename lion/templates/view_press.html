@@ -1,0 +1,58 @@
+{% extends 'header.html' %}
+
+{% block title %} {{ press.title }} {% endblock %}
+
+{% block body %}
+<style>
+    .space {
+        margin-top:90px;
+    }
+
+</style>
+<div class="space">
+
+</div>
+
+<div class="container">
+
+		<ol class="breadcrumb">
+			<li><a href="/press/">Press</a></li>
+			<li class="active">{{ press.title }}</li>
+		</ol>
+
+		<div class="row">
+<div class="col-lg-8">
+
+                <!-- Blog Post -->
+
+                <!-- Title -->
+                <h1>{{ press.title }}</h1>
+
+                <!-- Author -->
+                <p class="lead">
+                    by {{ press.author }}
+                </p>
+
+                <hr>
+
+                <!-- Date/Time -->
+                <p> <i class="fa fa-calendar "></i> Posted on {{ press.date_posted.strftime('%B %-m, %Y') }} at {{ press.date_posted.strftime('%l:%M %p') }} </p>
+
+                <hr>
+
+               
+
+                <!-- Post Content -->
+                <p class="lead" style="font-size:18px;">{{ press.body }}</p>
+
+               
+
+                <!-- Blog Comments -->
+
+               
+                
+
+            </div>
+    </div>
+</div>
+    {% endblock %}
